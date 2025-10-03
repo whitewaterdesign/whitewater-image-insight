@@ -1,25 +1,16 @@
-from typing import Annotated
 import uvicorn
+from fastapi import FastAPI
 
-from app.routes import info
-from fastapi import Depends, FastAPI
+from app.config.settings import config
+from app.routes import info, health
 
 app = FastAPI()
 
-
-@app.get("/hello")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
-
+app.include_router(health.router)
 app.include_router(info.router)
 
 def main() -> None:
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("app.main:app", host=config.host, port=config.port, reload=config.reload)
 
 if __name__ == "__main__":
     main()
