@@ -5,6 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     app_name: str = "FastAPI"
     admin_email: str = "<EMAIL>"
+    api_version: str = "0.0.1"
     items_per_user: int = 50
     openai_api_key: str
     agno_api_key: str
