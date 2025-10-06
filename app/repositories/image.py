@@ -12,7 +12,6 @@ class ImageRepositoryMeta(type):
     _instances = {}
     data = None
 
-
     def __call__(cls, *args, **kwargs):
         """
         Possible changes to the value of the `__init__` argument do not affect
@@ -23,7 +22,6 @@ class ImageRepositoryMeta(type):
             if ImageRepositoryMeta.data is None:
                 with open(f"{TMP_DIR}/db/img-db.json", "r", encoding="utf-8") as f:
                     data = json.load(f)
-                    print(data)
                     ImageRepositoryMeta.data = {img['id']: img['file_name'] for img in data}
                     ImageRepositoryMeta.data.update({img['url']: img['file_name'] for img in data})
             print("Creating new instance")
