@@ -1,7 +1,7 @@
+import os
 import json
 
-TMP_DIR = "../../tmp"
-
+TMP_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "tmp")
 
 class ImageRepositoryMeta(type):
     """

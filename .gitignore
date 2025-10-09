@@ -209,3 +209,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Instructions
+app/agentic/instructions/**
+!app/agentic/instructions/__init__.py
+!app/agentic/instructions/instructions.md
+app/model/schemas.py
