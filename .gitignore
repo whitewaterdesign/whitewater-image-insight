@@ -215,3 +215,6 @@ app/agentic/instructions/**
 !app/agentic/instructions/__init__.py
 !app/agentic/instructions/instructions.md
 app/model/schemas.py
+
+# BAML
+app/baml_client
