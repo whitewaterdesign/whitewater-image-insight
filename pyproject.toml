@@ -22,4 +22,7 @@ dependencies = [
     "safety>=3.6.2",
     "taskipy>=1.14.1",
     "uvicorn>=0.37.0",
+    "prefect>=3.4.25",
+    "baml-py>=0.214.0",
+    "baml-cli>=0.1.0",
 ]
