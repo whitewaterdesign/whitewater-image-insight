@@ -11,6 +11,7 @@ class ImageRepositoryMeta(type):
 
     _instances = {}
     data = None
+    data_url = None
 
     def __call__(cls, *args, **kwargs):
         """
@@ -24,6 +25,7 @@ class ImageRepositoryMeta(type):
                     data = json.load(f)
                     ImageRepositoryMeta.data = {img['id']: img['file_name'] for img in data}
                     ImageRepositoryMeta.data.update({img['url']: img['file_name'] for img in data})
+                    ImageRepositoryMeta.data_url = {img['url']: img['file_name'] for img in data}
             print("Creating new instance")
             instance = super().__call__(*args, **kwargs)
             cls._instances[cls] = instance
@@ -52,3 +54,6 @@ class ImageRepository(metaclass=ImageRepositoryMeta):
         with open(f"{TMP_DIR}/img/{ImageRepository.data[id]}", "rb") as image:
             f = image.read()
             return bytes(f)
+
+    def get_image_urls(self) -> list[str]:
+        return list(ImageRepositoryMeta.data_url.keys())

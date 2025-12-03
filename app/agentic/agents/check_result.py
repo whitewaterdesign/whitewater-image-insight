@@ -12,6 +12,8 @@ structured_output_agent = Agent(
     model=OpenAIChat(
         id="gpt-4o-mini",
         api_key=config.openai_api_key,
+        temperature=0.25
+
     ),
     description="You return a structured output from the result of an image analysis",
     output_schema=CheckResult

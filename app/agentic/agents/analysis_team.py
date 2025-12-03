@@ -12,6 +12,7 @@ image_analysis_team = Team(
     model=OpenAIChat(
         id="gpt-4o-mini",
         api_key=config.openai_api_key,
+        temperature=0.25
     ),
     members=[image_analysing_agent, structured_output_agent],
     instructions=[
